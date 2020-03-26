@@ -1,5 +1,6 @@
 ﻿using ERP.Model.Configruations;
 using ERP.Model.Entity;
+using ERP.Model.Extension;
 using JetBrains.Annotations;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -17,6 +18,7 @@ namespace ERP.Model.EF
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            // Configure Fluent API
             modelBuilder.ApplyConfiguration(new AppConfiguration());
 
             modelBuilder.ApplyConfiguration(new ProductConfiguration());
@@ -38,6 +40,8 @@ namespace ERP.Model.EF
             modelBuilder.ApplyConfiguration(new TransactionConfiguration());
 
 
+            // Data seeding
+            modelBuilder.seed();
 
             //base.OnModelCreating(modelBuilder);
         }
