@@ -18,3 +18,6 @@
 - Microsoft.Extensions.Configuration.Json
 - Microsoft.Extensions.Configuration.FileExtensions
 - Microsoft.Extensions.Configuration
+
+## common
+- Microsoft.CodeAnalysis.FxCopAnalyzers

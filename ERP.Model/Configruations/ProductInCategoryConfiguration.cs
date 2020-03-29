@@ -7,7 +7,7 @@ using System.Text;
 
 namespace ERP.Model.Configruations
 {
-    public class ProductInCategoryConfigurationm : IEntityTypeConfiguration<ProductIncategory>
+    public class ProductInCategoryConfiguration : IEntityTypeConfiguration<ProductIncategory>
     {
         public void Configure(EntityTypeBuilder<ProductIncategory> builder)
         {
