@@ -23,7 +23,7 @@ namespace ERP.Model.EF
 
             modelBuilder.ApplyConfiguration(new ProductConfiguration());
             modelBuilder.ApplyConfiguration(new CategoryConfiguration());
-            modelBuilder.ApplyConfiguration(new ProductInCategoryConfigurationm());
+            modelBuilder.ApplyConfiguration(new ProductInCategoryConfiguration());
             modelBuilder.ApplyConfiguration(new OrderConfiguration());
 
             modelBuilder.ApplyConfiguration(new OrderDetailConfiguration());
@@ -63,6 +63,7 @@ namespace ERP.Model.EF
 
         public DbSet<OrderDetail> OrderDetails { get; set; }
         public DbSet<ProductTranslation> ProductTranslations { get; set; }
+        public DbSet<ProductIncategory> ProductIncategories { get; set; }
 
         public DbSet<Promotion> Promotions { get; set; }
 
