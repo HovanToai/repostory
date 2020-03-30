@@ -66,6 +66,7 @@ namespace ERP.Model.EF
         public DbSet<ProductIncategory> ProductIncategories { get; set; }
 
         public DbSet<Promotion> Promotions { get; set; }
+        public DbSet<ProductImage> ProductImages { get; set; }
 
 
         public DbSet<Transaction> Transactions { get; set; }

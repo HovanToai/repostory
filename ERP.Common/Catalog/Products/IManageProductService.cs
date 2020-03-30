@@ -1,6 +1,7 @@
-﻿using ERP.Common.Catalog.Products.Dtos;
-using ERP.Common.Catalog.Products.Dtos.Manage;
-using ERP.Common.Dtos;
+﻿
+using ERP.ViewModels.Catalog.Products;
+using ERP.ViewModels.Common;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -25,6 +26,16 @@ namespace ERP.Common.Catalog.Products
         Task AddViewcount(int ProductId);
 
 
-        Task<PagedResult<ProductViewModel>> GetAllPaging(GetProductPagingRequest request);
+        Task<PagedResult<ProductViewModel>> GetAllPaging(GetMangeProductPagingRequest request);
+
+        // Thêm Riềng ảnh
+        Task<int> AddImage(int productId, List<IFormFile> files);
+        // xóa anh vừa mới thêm
+        Task<int> RemoveImage(int imageId);
+        // cập nhật ảnh
+        Task<int> UpdateImage(int imageId, string caption, bool isDefault);
+
+        Task<List<ProductImageViewModel>> GetListImage(int productId);
     }
+
 }
