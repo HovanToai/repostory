@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace ERP.Common.Common
 {
+    // Chon tap tin
     class FileStorageService : IStorageService
     {
         private readonly string _userContentFolder;

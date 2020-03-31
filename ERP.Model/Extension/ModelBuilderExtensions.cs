@@ -1,5 +1,6 @@
 ﻿using ERP.Model.Entity;
 using ERP.Model.Enums;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -17,8 +18,8 @@ namespace ERP.Model.Extension
                 new AppConfig() {  Key = "HomeDescription", Value = "this is description of eshopSolution"});
            
             modelBuilder.Entity<Language>().HasData(
-            new Language(){ Id = "vi-VN", Name = "Tiếng Việt",IsDefault = true },
-            new Language() { Id = "en-US", Name = "English", IsDefault = false});
+                new Language(){ Id = "vi-VN", Name = "Tiếng Việt",IsDefault = true },
+                new Language() { Id = "en-US", Name = "English", IsDefault = false});
 
             modelBuilder.Entity<Category>().HasData(
                 new Category() 
@@ -119,6 +120,40 @@ namespace ERP.Model.Extension
             modelBuilder.Entity<ProductIncategory>().HasData(
                 new ProductIncategory() { CategoryId = 1 , ProductId = 1}
                 );
+
+
+            // any guid
+            //var roleId = new Guid("F367F4F8-E382-4C74-8772-82271F1E5F61");
+            //var adminId = new Guid("32252DDE-AB4C-4C11-AD51-1AD16194CD4A");
+            //modelBuilder.Entity<AppRole>().HasData(new AppRole
+            //{
+            //    Id = roleId,
+            //    Name = "admin",
+            //    NormalizedName = "admin",
+            //    Description = "Administrator role"
+            //});
+
+            //var hasher = new PasswordHasher<AppUser>();
+            //modelBuilder.Entity<AppUser>().HasData(new AppUser
+            //{
+            //    Id = adminId,
+            //    UserName = "admin",
+            //    NormalizedUserName = "admin",
+            //    Email = "tedu.international@gmail.com",
+            //    NormalizedEmail = "tedu.international@gmail.com",
+            //    EmailConfirmed = true,
+            //    PasswordHash = hasher.HashPassword(null, "Abcd1234$"),
+            //    SecurityStamp = string.Empty,
+            //    FirstName = "Van",
+            //    LastName = "Toai",
+            //    Dob = new DateTime(2020, 03, 30)
+            //});
+
+            //modelBuilder.Entity<IdentityUserRole<Guid>>().HasData(new IdentityUserRole<Guid>
+            //{
+            //    RoleId = roleId,
+            //    UserId = adminId
+            //});
         }
-    }
+   } 
 }

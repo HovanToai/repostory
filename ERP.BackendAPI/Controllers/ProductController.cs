@@ -18,6 +18,7 @@ namespace ERP.BackendAPI.Controllers
             _publicProductService = publicProductService;
 
         }
+
         [HttpGet]
         public async Task<IActionResult> Get()
         {
