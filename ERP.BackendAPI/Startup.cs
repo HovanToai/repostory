@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ERP.Common.Catalog.Products;
+using ERP.Common.Common;
 using ERP.Model.EF;
 using ERP.Utilities.Constants;
 using Microsoft.AspNetCore.Builder;
@@ -34,8 +35,11 @@ namespace ERP.BackendAPI
             options.UseSqlServer(Configuration.GetConnectionString(SystemConstants.MainConnectionString)));
 
             //Declare DI
+            services.AddTransient<IStorageService, FileStorageService>();
             services.AddTransient<IPublicProductService, PublicProductService>();
+            services.AddTransient<IManageProductService, ManageProductService>();
             services.AddControllersWithViews();
+
 
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
@@ -65,6 +69,7 @@ namespace ERP.BackendAPI
             app.UseRouting();
 
             app.UseAuthorization();
+
 
 
             // Sử dụng lại
