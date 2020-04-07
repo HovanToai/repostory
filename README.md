@@ -8,7 +8,14 @@
 - update-database
 - 
 ## Install Packages
+##BackendAPI
+- Swashbuckle.AspNetCore
+- Microsoft.VisualStudio.Web.CodeGeneration.Desig
+- Microsoft.Extensions.Logging.Debug
+- Microsoft.EntityFrameworkCore.Tools
 
+
+##Entity
 - Microsoft.EntityFrameworkCore
 - Microsoft.EntityFrameworkCore.Sqlserver
 - Microsoft.EntityFrameworkCore.Tools
@@ -21,3 +28,11 @@
 
 ## common
 - Microsoft.CodeAnalysis.FxCopAnalyzers
+- Microsoft.AspNetCore.App
+- Microsoft.EntityFrameworkCore
+
+## ViewModel
+- Microsoft.AspNetCore.Http.Features
+
+## WebApp
+- Microsoft.EntityFrameworkCore.Design
