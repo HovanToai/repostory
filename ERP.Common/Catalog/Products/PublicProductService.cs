@@ -56,7 +56,7 @@ namespace ERP.Common.Catalog.Products
             //1. select join
             var query = from p in _context.Products
                         join pt in _context.ProductTranslations on p.Id equals pt.ProductId
-                        join pic in _context.ProductIncategories on pt.Id equals pic.ProductId
+                        join pic in _context.ProductInCategories on pt.Id equals pic.ProductId
                         join c in _context.Categories on pic.CategoryId equals c.Id
                         where pt.LanguageId  == languageId
                         select new { p, pt, pic };

@@ -92,6 +92,16 @@ namespace ERP.Model.Extension
                     Stock = 0, 
                     ViewCount = 0,     
                 });
+            modelBuilder.Entity<Product>().HasData(
+               new Product()
+               {
+                   Id = 2,
+                   DateCreated = DateTime.Now,
+                   OriginalPrice = 100000,
+                   Price = 200000,
+                   Stock = 0,
+                   ViewCount = 0,
+               });
             modelBuilder.Entity<ProductTranslation>().HasData(
                  new ProductTranslation()
                  {
@@ -123,37 +133,37 @@ namespace ERP.Model.Extension
 
 
             // any guid
-            //var roleId = new Guid("F367F4F8-E382-4C74-8772-82271F1E5F61");
-            //var adminId = new Guid("32252DDE-AB4C-4C11-AD51-1AD16194CD4A");
-            //modelBuilder.Entity<AppRole>().HasData(new AppRole
-            //{
-            //    Id = roleId,
-            //    Name = "admin",
-            //    NormalizedName = "admin",
-            //    Description = "Administrator role"
-            //});
+            var roleId = new Guid("F367F4F8-E382-4C74-8772-82271F1E5F61");
+            var adminId = new Guid("32252DDE-AB4C-4C11-AD51-1AD16194CD4A");
+            modelBuilder.Entity<AppRole>().HasData(new AppRole
+            {
+                Id = roleId,
+                Name = "admin",
+                NormalizedName = "admin",
+                Description = "Administrator role"
+            });
 
-            //var hasher = new PasswordHasher<AppUser>();
-            //modelBuilder.Entity<AppUser>().HasData(new AppUser
-            //{
-            //    Id = adminId,
-            //    UserName = "admin",
-            //    NormalizedUserName = "admin",
-            //    Email = "tedu.international@gmail.com",
-            //    NormalizedEmail = "tedu.international@gmail.com",
-            //    EmailConfirmed = true,
-            //    PasswordHash = hasher.HashPassword(null, "Abcd1234$"),
-            //    SecurityStamp = string.Empty,
-            //    FirstName = "Van",
-            //    LastName = "Toai",
-            //    Dob = new DateTime(2020, 03, 30)
-            //});
+            var hasher = new PasswordHasher<AppUser>();
+            modelBuilder.Entity<AppUser>().HasData(new AppUser
+            {
+                Id = adminId,
+                UserName = "admin",
+                NormalizedUserName = "admin",
+                Email = "hvtoai98@gmail.com",
+                NormalizedEmail = "hvtoai98@gmail.com",
+                EmailConfirmed = true,
+                PasswordHash = hasher.HashPassword(null, "Abcd1234$"),
+                SecurityStamp = string.Empty,
+                FirstName = "Nguyen",
+                LastName = "Bi",
+                Dob = new DateTime(2020, 04, 03)
+            });
 
-            //modelBuilder.Entity<IdentityUserRole<Guid>>().HasData(new IdentityUserRole<Guid>
-            //{
-            //    RoleId = roleId,
-            //    UserId = adminId
-            //});
+            modelBuilder.Entity<IdentityUserRole<Guid>>().HasData(new IdentityUserRole<Guid>
+            {
+                RoleId = roleId,
+                UserId = adminId
+            });
         }
-   } 
+    } 
 }

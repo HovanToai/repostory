@@ -1,8 +1,8 @@
 ﻿using ERP.Model.Configruations;
 using ERP.Model.Entity;
 using ERP.Model.Extension;
-using JetBrains.Annotations;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -10,17 +10,18 @@ using System.Text;
 
 namespace ERP.Model.EF
 {
-    public class EShopDbContext : DbContext
+    public class EShopDbContext : IdentityDbContext<AppUser, AppRole, Guid>
     {
-        public EShopDbContext( DbContextOptions options) : base(options)
+        public EShopDbContext(DbContextOptions options) : base(options)
         {
-            
         }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // Configure Fluent API
-            modelBuilder.ApplyConfiguration(new AppConfiguration());
+            //Configure using Fluent API
+            modelBuilder.ApplyConfiguration(new CartConfiguration());
 
+            modelBuilder.ApplyConfiguration(new AppConfiguration());
             modelBuilder.ApplyConfiguration(new ProductConfiguration());
             modelBuilder.ApplyConfiguration(new CategoryConfiguration());
             modelBuilder.ApplyConfiguration(new ProductInCategoryConfiguration());
@@ -37,14 +38,19 @@ namespace ERP.Model.EF
             modelBuilder.ApplyConfiguration(new AppUserConfiguration());
             modelBuilder.ApplyConfiguration(new AppRoleConfiguration());
             modelBuilder.ApplyConfiguration(new ProductImageConfiguration());
-            modelBuilder.ApplyConfiguration(new TransactionConfiguration());
 
+            modelBuilder.Entity<IdentityUserClaim<Guid>>().ToTable("AppUserClaims");
+            modelBuilder.Entity<IdentityUserRole<Guid>>().ToTable("AppUserRoles").HasKey(x => new { x.UserId, x.RoleId });
+            modelBuilder.Entity<IdentityUserLogin<Guid>>().ToTable("AppUserLogins").HasKey(x => x.UserId);
 
-            // Data seeding
+            modelBuilder.Entity<IdentityRoleClaim<Guid>>().ToTable("AppRoleClaims");
+            modelBuilder.Entity<IdentityUserToken<Guid>>().ToTable("AppUserTokens").HasKey(x => x.UserId);
+
+            //Data seeding
             modelBuilder.seed();
-
             //base.OnModelCreating(modelBuilder);
         }
+
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
 
@@ -54,6 +60,7 @@ namespace ERP.Model.EF
         public DbSet<Cart> Carts { get; set; }
 
         public DbSet<CategoryTranslation> CategoryTranslations { get; set; }
+        public DbSet<ProductIncategory> ProductInCategories { get; set; }
 
         public DbSet<Contact> Contacts { get; set; }
 
@@ -63,12 +70,14 @@ namespace ERP.Model.EF
 
         public DbSet<OrderDetail> OrderDetails { get; set; }
         public DbSet<ProductTranslation> ProductTranslations { get; set; }
-        public DbSet<ProductIncategory> ProductIncategories { get; set; }
 
         public DbSet<Promotion> Promotions { get; set; }
-        public DbSet<ProductImage> ProductImages { get; set; }
 
 
         public DbSet<Transaction> Transactions { get; set; }
+
+        public DbSet<ProductImage> ProductImages { get; set; }
+
+
     }
 }
